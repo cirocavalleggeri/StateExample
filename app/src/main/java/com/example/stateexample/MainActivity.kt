@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.stateexample.ui.theme.StateExampleTheme
 import androidx.compose.material.*
 import androidx.compose.material3.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ fun DemoScreen(){
 
 @Composable
 fun MyTextField(){
-    var textState = remember { mutableStateOf("") }
+    var textState  = remember { mutableStateOf("") }
     val onTextChange = { text : String ->
         textState.value = text
     }
