@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Greeting("Android")
                     DemoScreen()
-                    FunctionA()
+                  // FunctionA()
                 }
             }
         }
@@ -39,19 +39,23 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun DemoScreen(){
-
-    MyTextField()
+    var textState by remember { mutableStateOf("") }
+    val onTextChange = { text : String ->
+        textState = text
+    }
+    MyTextField(text = textState, onTextChange = onTextChange)
+   // MyTextField()
 }
 
 @Composable
-fun MyTextField(){
-    var textState  = remember { mutableStateOf("") }
+fun MyTextField(text: String, onTextChange : (String) -> Unit){
+   /* var textState  = remember { mutableStateOf("") }
     val onTextChange = { text : String ->
         textState.value = text
-    }
+    }*/
     TextField(
 
-        value = textState.value,
+        value = text,
         onValueChange = onTextChange
     )
 
