@@ -17,6 +17,7 @@ import com.example.stateexample.ui.theme.StateExampleTheme
 import androidx.compose.material.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
@@ -39,8 +40,8 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun DemoScreen(){
-    var textState by remember { mutableStateOf("") }
-    val onTextChange = { text : String ->
+    var textState by rememberSaveable { mutableStateOf("")}
+        val onTextChange = { text : String ->
         textState = text
     }
     MyTextField(text = textState, onTextChange = onTextChange)
