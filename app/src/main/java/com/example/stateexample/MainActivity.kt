@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Greeting("Android")
                     DemoScreen()
+                    FunctionA()
                 }
             }
         }
@@ -55,7 +56,25 @@ fun MyTextField(){
     )
 
 }
+@Composable
+fun FunctionA() {
+    var switchState by remember { mutableStateOf(true) }
+    val onSwitchChange = { value : Boolean ->
+        switchState = value
+    }
 
+    FunctionB(
+        switchState = switchState,
+        onSwitchChange = onSwitchChange
+    )
+}
+@Composable
+fun FunctionB(switchState: Boolean, onSwitchChange : (Boolean) -> Unit ) {
+    Switch(
+        checked = switchState,
+        onCheckedChange = onSwitchChange
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
